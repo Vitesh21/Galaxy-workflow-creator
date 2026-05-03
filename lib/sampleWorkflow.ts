@@ -44,18 +44,7 @@ export const SAMPLE_NODES: WorkflowNode[] = [
       manualInputs: {},
     },
   },
-  {
-    id: "crop-2",
-    type: "cropImage",
-    position: { x: 460, y: 500 },
-    data: {
-      type: "crop-image",
-      label: "Crop Image #2",
-      x: 0, y: 0, w: 100, h: 50,
-      status: "idle",
-      manualInputs: {},
-    },
-  },
+
   {
     id: "gemini-1",
     type: "gemini",
@@ -89,7 +78,7 @@ export const SAMPLE_NODES: WorkflowNode[] = [
     data: {
       type: "gemini",
       label: "Gemini 3.1 Pro #3 (Final)",
-      systemPrompt: "You are a social media manager. Combine the tweet hook and the two product crops into a final marketing post.",
+      systemPrompt: "You are a social media manager. Combine the tweet hook and the product crop into a final marketing post.",
       model: "gemini-2.5-flash",
       status: "idle",
       manualInputs: {},
@@ -111,12 +100,7 @@ export const SAMPLE_EDGES: WorkflowEdge[] = [
     target: "crop-1",         targetHandle: "input-image",
     animated: true, style: { stroke: "#7c3aed", strokeWidth: 2 },
   },
-  {
-    id: "e2",
-    source: "request-inputs", sourceHandle: "image_field",
-    target: "crop-2",         targetHandle: "input-image",
-    animated: true, style: { stroke: "#7c3aed", strokeWidth: 2 },
-  },
+
   // text_field → Gemini #1 prompt
   {
     id: "e3",
@@ -138,13 +122,7 @@ export const SAMPLE_EDGES: WorkflowEdge[] = [
     target: "gemini-3", targetHandle: "image-vision-0",
     animated: true, style: { stroke: "#7c3aed", strokeWidth: 2 },
   },
-  // Crop #2 output → Gemini #3 image-vision-1
-  {
-    id: "e6",
-    source: "crop-2",   sourceHandle: "output-image",
-    target: "gemini-3", targetHandle: "image-vision-1",
-    animated: true, style: { stroke: "#7c3aed", strokeWidth: 2 },
-  },
+
   // Gemini #2 response → Gemini #3 prompt
   {
     id: "e7",

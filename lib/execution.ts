@@ -93,8 +93,6 @@ export const HANDLE_TYPES: Record<string, "image" | "text"> = {
   "input-image": "image",
   "output-image": "image",
   "image-vision-0": "image",
-  "image-vision-1": "image",
-  "image-vision-2": "image",
   "text_field": "text",
   "prompt": "text",
   "response": "text",

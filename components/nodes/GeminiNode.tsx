@@ -18,8 +18,6 @@ const INPUT_ROWS = [
   { id: "prompt",          label: "Prompt",            required: true,  kind: "text",  color: "#f59e0b", uploadLabel: "" },
   { id: "system-prompt",   label: "System Prompt",     required: false, kind: "text",  color: "#f59e0b", uploadLabel: "" },
   { id: "image-vision-0",  label: "Image (Vision)",    required: false, kind: "image", color: "#f59e0b", uploadLabel: "Upload Image" },
-  { id: "image-vision-1",  label: "Image (Vision) #2", required: false, kind: "image", color: "#f59e0b", uploadLabel: "Upload Image" },
-  { id: "image-vision-2",  label: "Image (Vision) #3", required: false, kind: "image", color: "#f59e0b", uploadLabel: "Upload Image" },
   { id: "video",           label: "Video",             required: false, kind: "video", color: "#22c55e", uploadLabel: "Upload video" },
   { id: "audio",           label: "Audio",             required: false, kind: "audio", color: "#14b8a6", uploadLabel: "Upload audio" },
   { id: "file",            label: "File",              required: false, kind: "file",  color: "#8b5cf6", uploadLabel: "Upload file"  },
