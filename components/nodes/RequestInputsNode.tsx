@@ -73,7 +73,7 @@ export const RequestInputsNode = memo(function RequestInputsNode({ id, data, sel
           const imgUrl = fieldValues[field.id];
 
           return (
-            <div key={field.id} className="relative group/f">
+            <div key={field.id} className="group/f">
               {/* Source handle */}
               <Handle
                 type="source"

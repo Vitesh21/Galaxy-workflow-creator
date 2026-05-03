@@ -107,7 +107,7 @@ export const CropImageNode = memo(function CropImageNode({ id, data, selected }:
       {/* Body */}
       <div className="px-3 py-2.5 space-y-1">
         {/* Input Image row */}
-        <div className="relative" style={{ height: INPUT_ROW_H }}>
+        <div style={{ height: INPUT_ROW_H }}>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] text-[#374151] font-medium">Input Image<span className="text-red-500">*</span></span>
           </div>

@@ -18,12 +18,12 @@ export const SAMPLE_NODES: WorkflowNode[] = [
   {
     id: "request-inputs",
     type: "requestInputs",
-    position: { x: 80, y: 460 },
+    position: { x: 40, y: -40 },
     data: {
       type: "request-inputs",
       label: "Request-Inputs",
       fields: [
-        { id: "text_field",  label: "text_field",  kind: "text_field"  },
+        { id: "text_field", label: "text_field", kind: "text_field" },
         { id: "image_field", label: "image_field", kind: "image_field" },
       ],
       fieldValues: {
@@ -44,11 +44,23 @@ export const SAMPLE_NODES: WorkflowNode[] = [
       manualInputs: {},
     },
   },
+  {
+    id: "crop-2",
+    type: "cropImage",
+    position: { x: 460, y: 500 },
+    data: {
+      type: "crop-image",
+      label: "Crop Image #2",
+      x: 0, y: 0, w: 100, h: 50,
+      status: "idle",
+      manualInputs: {},
+    },
+  },
 
   {
     id: "gemini-1",
     type: "gemini",
-    position: { x: 900, y: 60 },
+    position: { x: 460, y: -600 },
     data: {
       type: "gemini",
       label: "Gemini 3.1 Pro #1",
@@ -61,7 +73,7 @@ export const SAMPLE_NODES: WorkflowNode[] = [
   {
     id: "gemini-2",
     type: "gemini",
-    position: { x: 1360, y: 60 },
+    position: { x: 900, y: -500 },
     data: {
       type: "gemini",
       label: "Gemini 3.1 Pro #2",
@@ -74,7 +86,7 @@ export const SAMPLE_NODES: WorkflowNode[] = [
   {
     id: "gemini-3",
     type: "gemini",
-    position: { x: 1360, y: 700 },
+    position: { x: 1360, y: 200 },
     data: {
       type: "gemini",
       label: "Gemini 3.1 Pro #3 (Final)",
@@ -87,7 +99,7 @@ export const SAMPLE_NODES: WorkflowNode[] = [
   {
     id: "response",
     type: "responseNode",
-    position: { x: 1820, y: 420 },
+    position: { x: 1820, y: 120 },
     data: { type: "response", label: "Response", status: "idle" },
   },
 ];
@@ -97,44 +109,56 @@ export const SAMPLE_EDGES: WorkflowEdge[] = [
   {
     id: "e1",
     source: "request-inputs", sourceHandle: "image_field",
-    target: "crop-1",         targetHandle: "input-image",
+    target: "crop-1", targetHandle: "input-image",
     animated: true, style: { stroke: "#7c3aed", strokeWidth: 2 },
   },
-
+  // image_field → crop-2
+  {
+    id: "e2",
+    source: "request-inputs", sourceHandle: "image_field",
+    target: "crop-2", targetHandle: "input-image",
+    animated: true, style: { stroke: "#7c3aed", strokeWidth: 2 },
+  },
   // text_field → Gemini #1 prompt
   {
     id: "e3",
     source: "request-inputs", sourceHandle: "text_field",
-    target: "gemini-1",       targetHandle: "prompt",
+    target: "gemini-1", targetHandle: "prompt",
     animated: true, style: { stroke: "#7c3aed", strokeWidth: 2 },
   },
   // Gemini #1 response → Gemini #2 prompt
   {
     id: "e4",
-    source: "gemini-1",  sourceHandle: "response",
-    target: "gemini-2",  targetHandle: "prompt",
+    source: "gemini-1", sourceHandle: "response",
+    target: "gemini-2", targetHandle: "prompt",
     animated: true, style: { stroke: "#7c3aed", strokeWidth: 2 },
   },
   // Crop #1 output → Gemini #3 image-vision-0
   {
     id: "e5",
-    source: "crop-1",   sourceHandle: "output-image",
+    source: "crop-1", sourceHandle: "output-image",
     target: "gemini-3", targetHandle: "image-vision-0",
     animated: true, style: { stroke: "#7c3aed", strokeWidth: 2 },
   },
-
+  // Crop #2 output → Gemini #3 image-vision-0
+  {
+    id: "e6",
+    source: "crop-2", sourceHandle: "output-image",
+    target: "gemini-3", targetHandle: "image-vision-0",
+    animated: true, style: { stroke: "#7c3aed", strokeWidth: 2 },
+  },
   // Gemini #2 response → Gemini #3 prompt
   {
     id: "e7",
-    source: "gemini-2",  sourceHandle: "response",
-    target: "gemini-3",  targetHandle: "prompt",
+    source: "gemini-2", sourceHandle: "response",
+    target: "gemini-3", targetHandle: "prompt",
     animated: true, style: { stroke: "#7c3aed", strokeWidth: 2 },
   },
   // Gemini #3 response → Response result
   {
     id: "e8",
     source: "gemini-3", sourceHandle: "response",
-    target: "response",  targetHandle: "result",
+    target: "response", targetHandle: "result",
     animated: true, style: { stroke: "#7c3aed", strokeWidth: 2 },
   },
 ];

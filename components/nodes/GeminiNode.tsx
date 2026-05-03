@@ -124,7 +124,7 @@ export const GeminiNode = memo(function GeminiNode({ id, data, selected }: Props
           const handleTop = HEADER_H + PAD_TOP + i * ROW_H + ROW_H / 2 - 6;
 
           return (
-            <div key={row.id} className="relative" style={{ minHeight: ROW_H }}>
+            <div key={row.id} style={{ minHeight: ROW_H }}>
               {/* Target handle */}
               <Handle type="target" position={Position.Left} id={row.id}
                 style={{ top: handleTop, left: -7, width: 13, height: 13, background: row.color, border: "2.5px solid #fff", borderRadius: "50%" }} />
