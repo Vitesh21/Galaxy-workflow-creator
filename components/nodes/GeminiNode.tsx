@@ -59,7 +59,8 @@ export const GeminiNode = memo(function GeminiNode({ id, data, selected }: Props
   }
 
   const totalRows = INPUT_ROWS.length;
-  const outTop = HEADER_H + PAD_TOP + totalRows * ROW_H / 2;
+  // Position output handle at the Response section (after all input rows + settings button)
+  const outTop = HEADER_H + PAD_TOP + totalRows * ROW_H + 26 + 40;
 
   const manualInputs = (data.manualInputs as Record<string,string>) ?? {};
 

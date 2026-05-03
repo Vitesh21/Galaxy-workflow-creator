@@ -9,6 +9,7 @@ import {
   addEdge,
   useNodesState,
   useEdgesState,
+  useUpdateNodeInternals,
   type Connection,
   type Edge,
   type Node,
@@ -131,6 +132,7 @@ function CanvasInner({
 }: WorkflowCanvasProps) {
   const router = useRouter();
   const { getNodes, getEdges, fitView } = useReactFlow();
+  const updateNodeInternals = useUpdateNodeInternals();
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes as unknown as Node[]);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges as unknown as Edge[]);
@@ -152,6 +154,15 @@ function CanvasInner({
   useEffect(() => {
     return () => { pollIntervals.current.forEach(clearInterval); };
   }, []);
+
+  // Force React Flow to recalculate handle positions after mount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const allNodeIds = nodes.map((n) => n.id);
+      allNodeIds.forEach((id) => updateNodeInternals(id));
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   function scheduleAutosave(ns: Node[], es: Edge[]) {
     if (saveTimer.current) clearTimeout(saveTimer.current);
