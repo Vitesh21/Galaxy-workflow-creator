@@ -45,10 +45,10 @@ body {
   fill: #7c3aed !important;
 }
 
-/* ── Handles: hidden by default, appear on node hover ── */
+/* ── Handles: visible by default ── */
 .react-flow__handle {
   cursor: crosshair !important;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease !important;
 }
 
